@@ -16,6 +16,7 @@ const TodoInput = ({ addTodo }: Props) => {
 
   const onKeyPress = (e: any) => {
     if (e.key === "Enter") {
+      if (value === "") return;
       addTodo(value);
       setValue("");
     }

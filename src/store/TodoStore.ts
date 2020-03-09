@@ -1,8 +1,15 @@
 import { observable, action } from "mobx";
-import remotedev from "mobx-remotedev";
+// import remotedev from "mobx-remotedev";
+import RootStore from "./RootStore";
 
-@remotedev
+// @remotedev
 class TodoStore {
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+  }
+
   @observable todos: any[] = [];
 
   @action addTodo = (todo: string) => {
@@ -12,6 +19,14 @@ class TodoStore {
       checked: false
     });
   };
+
+  @action.bound
+  setChecked(id: number) {
+    this.todos = this.todos.map(todo => ({
+      ...todo,
+      checked: id === todo.id ? !todo.checked : todo.checked
+    }));
+  }
 }
 
 export default TodoStore;

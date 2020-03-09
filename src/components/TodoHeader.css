@@ -1,0 +1,11 @@
+.todo-header {
+  text-align: center;
+}
+
+.big-title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 26px;
+}
